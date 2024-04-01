@@ -1,1 +1,1 @@
-A basic user management system. Introduction to WPF using MVVM design pattern.
+A basic user management system. Introduction to WPF and MVVM design pattern.
