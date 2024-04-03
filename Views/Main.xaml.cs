@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UserManagementSystem.ViewModels;
+using UserManagementSystem.Models;
 
 namespace UserManagementSystem.Views
 {
@@ -26,6 +27,18 @@ namespace UserManagementSystem.Views
             //explicitly linked the MainViewModel to the Main View
             MainViewModel mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
+        }
+
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //derived from ListView w/ Name = UserList
+            UserList.Items.Filter = FilterMethod;
+        }
+        private bool FilterMethod(object obj)
+        {
+            var user = (User)obj;
+            return user.Name.Contains(FilterTextBox.Text,StringComparison.OrdinalIgnoreCase);
+            //add argument to disregard case sensitivity
         }
     }
 }

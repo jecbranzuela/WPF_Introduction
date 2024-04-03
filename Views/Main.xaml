@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Main" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="270" Height="25"/>
+        <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged"  HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="25" Background="#FFD2BEBE" BorderBrush="#FF010208"/>
         <ListView Name="UserList" ItemsSource="{Binding Users}" Margin="30,78,500,48" SelectedItem="{Binding SelectedUser}" SelectedIndex="{Binding SelectedIndex}" Background="{x:Null}">
             <ListView.View>
                 <GridView>

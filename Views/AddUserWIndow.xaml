@@ -19,7 +19,7 @@
             <TextBox Text="{Binding Description}" Height="150" TextWrapping="Wrap"/>
         </StackPanel>
         <Button Content="Save" CommandParameter="{x:Reference Name=addwindow}" Command="{Binding AddUserCommand}"  HorizontalAlignment="Left" Margin="317,387,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="220,387,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
+        <Button Content="Cancel" CommandParameter="{x:Reference Name=addwindow}" Command="{Binding CancelCommand}" HorizontalAlignment="Left" Margin="220,387,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
     </Grid>
 
 </Window>

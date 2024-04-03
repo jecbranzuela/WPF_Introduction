@@ -14,6 +14,7 @@ namespace UserManagementSystem.ViewModels
     {
         //this command represents the action that should be done when the "save" button is clicked
         public ICommand AddUserCommand { get; set; } 
+        public ICommand CancelCommand { get; set; } 
         private string? _name;
         private string? _email;
         private DateTime? _birthDay;
@@ -41,6 +42,18 @@ namespace UserManagementSystem.ViewModels
         public AddUserViewModel()
         {
             AddUserCommand = new RelayCommand(AddUser, CanAddUser);
+            CancelCommand = new RelayCommand(CancelOperation, CanCancelOperation);
+        }
+
+        private bool CanCancelOperation(object obj)
+        {
+            return true;
+        }
+
+        private void CancelOperation(object obj)
+        {
+            var addUserWindow = obj as Window;
+            addUserWindow.Close();
         }
 
         private bool CanAddUser(object obj)
