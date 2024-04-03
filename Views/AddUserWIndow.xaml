@@ -1,0 +1,25 @@
+﻿<Window x:Class="UserManagementSystem.Views.AddUserWIndow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserManagementSystem.Views"
+        mc:Ignorable="d"
+        Title="AddUserWIndow" Height="450" Width="400"
+        Name="addwindow">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Width="249" Margin="58,47,0,47">
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding Name}"/>
+            <TextBlock Text="Email"/>
+            <TextBox Text="{Binding Email}"/>
+            <TextBlock Text="Birthday"/>
+            <DatePicker SelectedDate="{Binding BirthDay, Mode=TwoWay}"/>
+            <TextBlock Text="Description"/>
+            <TextBox Text="{Binding Description}" Height="150" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Button Content="Save" CommandParameter="{x:Reference Name=addwindow}" Command="{Binding AddUserCommand}"  HorizontalAlignment="Left" Margin="317,387,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="220,387,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
+    </Grid>
+
+</Window>

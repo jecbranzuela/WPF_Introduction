@@ -6,8 +6,11 @@ using System.Linq;
 using System.Runtime.CompilerServices; //CallerMemberName
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using UserManagementSystem.Commands;
 using UserManagementSystem.Models;
+using UserManagementSystem.Views;
 namespace UserManagementSystem.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
@@ -15,7 +18,7 @@ namespace UserManagementSystem.ViewModels
         public ObservableCollection<User> Users { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        public ICommand ShowWindowCommand { get; set; }
+        public ICommand ShowAddUserWindowCommand { get; set; }
 
         private User _selectedUser;
         private int _selectedIndex;
@@ -37,6 +40,20 @@ namespace UserManagementSystem.ViewModels
         public MainViewModel()
         {
             Users = UserManagement.GetUsers();
+            ShowAddUserWindowCommand = new RelayCommand(ShowAddWindow, CanShowAddWindow);
+        }
+
+        private bool CanShowAddWindow(object obj)
+        {
+            return true;
+        }
+
+        private void ShowAddWindow(object obj)
+        {
+            //create instance of AddUserWindow view
+            AddUserWIndow addUserWIndow = new AddUserWIndow();
+            addUserWIndow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            addUserWIndow.Show(); //Actually show the window
         }
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)

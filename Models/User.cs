@@ -13,7 +13,7 @@ namespace UserManagementSystem.Models
         public DateTime? Birthday { get; set; }
         public string? Description { get; set; }
 
-        public User(string name, string email, DateTime birthday, string description)
+        public User(string? name, string? email, DateTime? birthday, string? description)
         {
             Name = name;
             Email = email;

@@ -8,14 +8,14 @@
         Title="Main" Height="450" Width="800">
     <Grid>
         <TextBox HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="270" Height="25"/>
-        <ListView Name="UserList" ItemsSource="{Binding Users}" Margin="30,78,500,48" SelectedItem="{Binding SelectedUser}" SelectedIndex="{Binding SelectedIndex}">
+        <ListView Name="UserList" ItemsSource="{Binding Users}" Margin="30,78,500,48" SelectedItem="{Binding SelectedUser}" SelectedIndex="{Binding SelectedIndex}" Background="{x:Null}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="270"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        
+
         <StackPanel DataContext="{Binding SelectedUser}" HorizontalAlignment="Left" Width="249" Margin="335,70,0,25">
             <TextBlock Text="Selected Element"/>
             <TextBlock Text="Name"/>
@@ -27,5 +27,7 @@
             <TextBlock Text="Description"/>
             <TextBox IsReadOnly="True" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Height="150" TextWrapping="Wrap"/>
         </StackPanel>
+        <Button Content="Add User" Command="{Binding ShowAddUserWindowCommand}" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Height="25" Width="72"/>
+    
     </Grid>
 </Window>
