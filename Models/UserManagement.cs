@@ -24,5 +24,9 @@ namespace UserManagementSystem.Models
         {
             DatabaseUsers.Add(user);
         }
+        public static void DeleteUser(User user)
+        {
+            DatabaseUsers.Remove(user);
+        }
     }
 }

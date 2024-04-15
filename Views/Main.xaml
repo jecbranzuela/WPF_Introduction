@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserManagementSystem.Views"
         mc:Ignorable="d"
-        Title="Main" Height="450" Width="800">
-    <Grid>
+        Background="Transparent"
+        Title="Main"
+        Height="450"
+        Width="800">
+    <!--<Grid>
         <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged"  HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="25" Background="#FFD2BEBE" BorderBrush="#FF010208"/>
         <ListView Name="UserList" ItemsSource="{Binding Users}" Margin="30,78,500,48" SelectedItem="{Binding SelectedUser}" SelectedIndex="{Binding SelectedIndex}" Background="{x:Null}">
             <ListView.View>
@@ -28,6 +31,151 @@
             <TextBox IsReadOnly="True" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Height="150" TextWrapping="Wrap"/>
         </StackPanel>
         <Button Content="Add User" Command="{Binding ShowAddUserWindowCommand}" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Height="25" Width="72"/>
-    
-    </Grid>
+        <Button Content="Delete User" Command="{Binding DeleteEntryCommand}" HorizontalAlignment="Left" Margin="578,30,0,0" VerticalAlignment="Top" Height="25" Width="72"/>
+
+    </Grid>-->
+    <Border Background="Beige"
+            CornerRadius="20">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="325"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="CpE 1231 WPF"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.ColumnSpan="3"/>
+
+            <StackPanel Grid.Column="0"
+                        Grid.Row="1"
+                        Margin="20,0,20,0">
+
+                <TextBox Name="FilterTextBox"
+                         TextChanged="FilterTextBox_TextChanged"
+                         Margin="0,0,0,20"/>
+
+                <ListView Name="UserList"
+                          ItemsSource="{Binding Users}"
+                          SelectedItem="{Binding SelectedUser}"
+                          SelectedIndex="{Binding SelectedIndex}"
+                          HorizontalAlignment="Center"
+                          Height="280"
+                          >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                            Header="Name"
+                            Width="200"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+
+
+
+            <Grid VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  Grid.Row="1"
+                  Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Selected Element"
+                           HorizontalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"/>
+                <TextBlock Text="Name"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"
+                           Grid.Row="1"
+                           Grid.Column="0"/>
+
+                <TextBlock Text="Email"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"
+                           Grid.Row="2"
+                           Grid.Column="0"/>
+
+                <TextBlock Text="Birthday"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"
+                           Grid.Row="3"
+                           Grid.Column="0"/>
+
+                <TextBlock Text="Description"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"
+                           Grid.Row="4"
+                           Grid.Column="0"/>
+
+                <TextBox IsReadOnly="True"
+                         Text="{Binding SelectedUser.Name, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="1"
+                         Grid.Column="1"/>
+
+                <TextBox IsReadOnly="True"
+                         Text="{Binding SelectedUser.Email, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="2"
+                         Grid.Column="1"/>
+
+                <TextBox IsReadOnly="True"
+                         Text="{Binding SelectedUser.Birthday, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="3"
+                         Grid.Column="1"/>
+
+                <TextBox IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         Text="{Binding SelectedUser.Description, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Row="4"
+                         Grid.Column="1"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="2"
+                        Grid.Column="2">
+                
+                <Button Content="Add User"
+                Command="{Binding ShowAddUserWindowCommand}"
+                        Margin="20,0,0,10"/>
+
+                <Button Content="Delete User"
+                Command="{Binding DeleteEntryCommand}"
+                        Margin="20,0,0,10"/>
+
+                <Button Content="Edit User"
+                        Command="{Binding EditEntryCommand}"
+                                Margin="20,0,0,10"/>
+            </StackPanel>
+            
+        </Grid>
+    </Border>
 </Window>

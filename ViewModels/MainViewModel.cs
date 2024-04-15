@@ -19,6 +19,7 @@ namespace UserManagementSystem.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public ICommand ShowAddUserWindowCommand { get; set; }
+        public ICommand DeleteEntryCommand { get; set; }
 
         private User _selectedUser;
         private int _selectedIndex;
@@ -41,6 +42,7 @@ namespace UserManagementSystem.ViewModels
         {
             Users = UserManagement.GetUsers();
             ShowAddUserWindowCommand = new RelayCommand(ShowAddWindow, CanShowAddWindow);
+            DeleteEntryCommand = new RelayCommand(DeleteEntry,CanDeleteEntry);
         }
 
         private bool CanShowAddWindow(object obj)
@@ -54,6 +56,14 @@ namespace UserManagementSystem.ViewModels
             AddUserWIndow addUserWIndow = new AddUserWIndow();
             addUserWIndow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addUserWIndow.Show(); //Actually show the window
+        }
+        private bool CanDeleteEntry(object obj)
+        {
+            return true;
+        }
+        private void DeleteEntry(object obj)
+        {
+            UserManagement.DeleteUser(SelectedUser);
         }
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
