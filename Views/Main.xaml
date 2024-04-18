@@ -221,6 +221,9 @@
                        Width="30"
                        Margin="10,0,0,0"
                        Content="50"/>
+                <!--50 as content is only a placeholder,
+                this label shall update wrt the records per page
+                set by the program's user-->
 
                 <Button Content=">"
                         ToolTip="Go to Next Page"
