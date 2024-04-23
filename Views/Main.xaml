@@ -8,7 +8,7 @@
         Background="Transparent"
         Title="Main"
         Height="470"
-        Width="1000">
+        Width="800">
     <!--<Grid>
         <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged"  HorizontalAlignment="Left" Margin="30,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Height="25" Background="#FFD2BEBE" BorderBrush="#FF010208"/>
         <ListView Name="UserList" ItemsSource="{Binding Users}" Margin="30,78,500,48" SelectedItem="{Binding SelectedUser}" SelectedIndex="{Binding SelectedIndex}" Background="{x:Null}">
@@ -70,12 +70,10 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Height="25"
                             Content="Records per Page"/>
-                    <ComboBox ToolTip="Shows the amount of records per page">
-                        <ComboBoxItem>10</ComboBoxItem>
-                        <ComboBoxItem>15</ComboBoxItem>
-                        <ComboBoxItem>20</ComboBoxItem>
-                        <ComboBoxItem>25</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox ToolTip="Shows the amount of records per page"
+                              ItemsSource="{Binding RecordOptions}"
+                              SelectedValue="{Binding SelectedValuePage,
+                              UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 
 
@@ -178,15 +176,15 @@
                 
                 <Button Content="Add User"
                 Command="{Binding ShowAddUserWindowCommand}"
-                        Margin="20,0,0,10"/>
+                        Margin="10,0,0,10"/>
 
                 <Button Content="Delete User"
                 Command="{Binding DeleteEntryCommand}"
-                        Margin="20,0,0,10"/>
+                        Margin="10,0,0,10"/>
 
                 <Button Content="Edit User"
                         Command="{Binding EditEntryCommand}"
-                                Margin="20,0,0,10"/>
+                                Margin="10,0,0,10"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3"
@@ -195,6 +193,8 @@
                         Orientation="Horizontal">
                 <Button Content="&lt;&lt;"
                         ToolTip="Go to First Page"
+                        IsEnabled="{Binding IsFirstEnabled}"
+                        Command="{Binding FirstCommand}"
                         Height="20"
                         Width="20"
                         VerticalAlignment="Center"
@@ -202,6 +202,8 @@
 
                 <Button Content="&lt;"
                         ToolTip="Go to Previous Page"
+                        IsEnabled="{Binding IsPreviousEnabled}"
+                        Command="{Binding PreviousCommand}"
                         Height="20"
                         Width="20"
                         VerticalAlignment="Center"
@@ -210,7 +212,8 @@
 
                 <TextBox Height="20"
                          Width="20"
-                         Margin="10,0,0,0"/>
+                         Margin="10,0,0,0"
+                         Text="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Height="30"
                        Width="20"
@@ -220,13 +223,15 @@
                 <Label Height="30"
                        Width="30"
                        Margin="10,0,0,0"
-                       Content="50"/>
+                       Content="{Binding NumberofPages,UpdateSourceTrigger=PropertyChanged}"/>
                 <!--50 as content is only a placeholder,
                 this label shall update wrt the records per page
                 set by the program's user-->
 
                 <Button Content=">"
                         ToolTip="Go to Next Page"
+                        IsEnabled="{Binding IsNextEnabled}"
+                        Command="{Binding NextCommand}"
                         Height="20"
                         Width="20"
                         VerticalAlignment="Center"
@@ -235,6 +240,8 @@
 
                 <Button Content=">>"
                         ToolTip="Go to Last Page"
+                        IsEnabled="{Binding IsLastEnabled}"
+                        Command="{Binding LastCommand}"
                         Height="20"
                         Width="20"
                         VerticalAlignment="Center"
