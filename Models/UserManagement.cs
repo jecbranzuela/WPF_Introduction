@@ -15,7 +15,7 @@ namespace UserManagementSystem.Models
         {
             var faker = new Faker();
             faker.Random = new Randomizer(123); //use the same seed for consistent data
-            int numberOfUsersToGenerate = 1000;
+            int numberOfUsersToGenerate = 100;
             for (int i = 0;i < numberOfUsersToGenerate; i++)
             {
                 string name = faker.Name.FullName();
@@ -24,19 +24,28 @@ namespace UserManagementSystem.Models
                 var endDate = new DateOnly(2005,1,1);
                 var birthDay = faker.Date.BetweenDateOnly(fromDate, endDate).ToDateTime(TimeOnly.MinValue);
                 string description = faker.Lorem.Paragraph();
-                
-                var user = new User(name,email,birthDay,description);
+
+                var userId = i+1;
+                var user = new User(userId,name, email,birthDay,description);
                 DatabaseUsers.Add(user);
             }
             return DatabaseUsers;
         }
         public static void AddUser(User user)
         {
+            user.Id = DatabaseUsers.Count() + 1;
             DatabaseUsers.Add(user);
         }
         public static void DeleteUser(User user)
         {
             DatabaseUsers.Remove(user);
+        }
+        public static void EditUser(User selectedUser,string? name, string? email, DateTime? birthday, string? description)
+        {
+            selectedUser.Name = name;
+            selectedUser.Email = email;
+            selectedUser.BirthDay = birthday;
+            selectedUser.Description = description;
         }
     }
 }

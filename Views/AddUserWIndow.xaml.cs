@@ -23,8 +23,6 @@ namespace UserManagementSystem.Views
         public AddUserWIndow()
         {
             InitializeComponent();
-            AddUserViewModel addUserVM = new AddUserViewModel();
-            this.DataContext = addUserVM;
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Lx0LFmH7jOEjYOQV9bXyYPfR4XYt5BidQ5CO0IAN6YB8R6mjdnE780Uu4Tfk4gLBLj6cX3BJ9umB3MeVey9TIA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jecbr\\OneDrive\\Desktop\\UserManagementSystem\\UserManagementSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jecbr\\.nuget\\packages\\bogus\\35.5.0\\bogus.35.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

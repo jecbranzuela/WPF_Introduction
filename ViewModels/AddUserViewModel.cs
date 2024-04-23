@@ -15,6 +15,7 @@ namespace UserManagementSystem.ViewModels
         //this command represents the action that should be done when the "save" button is clicked
         public ICommand AddUserCommand { get; set; } 
         public ICommand CancelCommand { get; set; } 
+        public MainViewModel MainVMContext { get; set; }
         private string? _name;
         private string? _email;
         private DateTime? _birthDay;
@@ -63,8 +64,10 @@ namespace UserManagementSystem.ViewModels
 
         private void AddUser(object obj)
         {
+
             User newUser = new User(this.Name,this.Email,this.BirthDay,this.Description);
             UserManagement.AddUser(newUser);
+            MainVMContext.DisplayNewUser(newUser);
 
             //close the current window
             var addUserWindow = obj as Window;

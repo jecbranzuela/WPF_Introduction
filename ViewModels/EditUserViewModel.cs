@@ -80,18 +80,14 @@ namespace UserManagementSystem.ViewModels
             SelectedUser = selectedUser;
             NewName = SelectedUser.Name;
             NewEmail = SelectedUser.Email;
-            NewBirthDay = SelectedUser.Birthday;
+            NewBirthDay = SelectedUser.BirthDay;
             _newDescription = SelectedUser.Description;
             SaveChangesCommand = new RelayCommand(SaveChanges, CanSaveChanges);
             CancelCommand = new RelayCommand(CancelChanges,(s)=>true);
         }
         private void SaveChanges(object obj)
         {
-            SelectedUser.Name = NewName;
-            SelectedUser.Email = NewEmail;
-            SelectedUser.Birthday = NewBirthDay;
-            SelectedUser.Description = NewDescription;
-
+            UserManagement.EditUser(SelectedUser, NewName, NewEmail, NewBirthDay, NewDescription);
             var editUserWin = obj as Window;
             editUserWin.Close();
 
